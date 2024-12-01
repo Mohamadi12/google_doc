@@ -6,7 +6,9 @@ type Props = {
 
 const Layout = ({children}: Props) => {
   return (
-    <div>Layout</div>
+    <div>
+      {children}
+    </div>
   )
 }
 
