@@ -1,45 +1,47 @@
 "use client";
 
 import StarterKit from "@tiptap/starter-kit";
-import Image from '@tiptap/extension-image'
+import Image from "@tiptap/extension-image";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
-import Underline from "@tiptap/extension-underline"
-import ImageResize from "tiptap-extension-resize-image"
-import Table from '@tiptap/extension-table'
-import TableCell from '@tiptap/extension-table-cell'
-import TableHeader from '@tiptap/extension-table-header'
-import TableRow from '@tiptap/extension-table-row'
+import Underline from "@tiptap/extension-underline";
+import FontFamily from "@tiptap/extension-font-family";
+import TextStyle from "@tiptap/extension-text-style";
+import ImageResize from "tiptap-extension-resize-image";
+import Table from "@tiptap/extension-table";
+import TableCell from "@tiptap/extension-table-cell";
+import TableHeader from "@tiptap/extension-table-header";
+import TableRow from "@tiptap/extension-table-row";
 import { useEditor, EditorContent } from "@tiptap/react";
 import { useEditorState } from "@/app/store/use-editor-store";
 
 export const Editor = () => {
-  const {setEditor} =useEditorState()
+  const { setEditor } = useEditorState();
 
   const editor = useEditor({
-    onCreate({editor}){
-      setEditor(editor)
+    onCreate({ editor }) {
+      setEditor(editor);
     },
-    onDestroy(){
-      setEditor(null)
+    onDestroy() {
+      setEditor(null);
     },
-    onUpdate(){
-      setEditor(editor)
+    onUpdate() {
+      setEditor(editor);
     },
-    onSelectionUpdate(){
-      setEditor(editor)
+    onSelectionUpdate() {
+      setEditor(editor);
     },
-    onTransaction(){
-      setEditor(editor)
+    onTransaction() {
+      setEditor(editor);
     },
-    onFocus(){
-      setEditor(editor)
+    onFocus() {
+      setEditor(editor);
     },
-    onBlur(){
-      setEditor(editor)
+    onBlur() {
+      setEditor(editor);
     },
-    onContentError(){
-      setEditor(editor)
+    onContentError() {
+      setEditor(editor);
     },
     editorProps: {
       attributes: {
@@ -50,6 +52,8 @@ export const Editor = () => {
     },
     extensions: [
       StarterKit,
+      FontFamily,
+      TextStyle,
       Underline,
       Image,
       ImageResize,
@@ -80,7 +84,7 @@ export const Editor = () => {
       </tbody>
     </table>
   `,
-})
+  });
   return (
     <div className="size-full overflow-x-auto bg-[#F9FBFD] px-4 print:p-0 print:bg-white print:overflow-visible">
       <div className="min-w-max flex justify-center py-4 print:py-0 print:w-full print:min-w-0 w-[816px] mx-auto">
