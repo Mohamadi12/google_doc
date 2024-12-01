@@ -1,6 +1,8 @@
 "use client";
 
 import StarterKit from "@tiptap/starter-kit";
+import Highlight from '@tiptap/extension-highlight'
+import { Color } from '@tiptap/extension-color'
 import Image from "@tiptap/extension-image";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
@@ -52,6 +54,10 @@ export const Editor = () => {
     },
     extensions: [
       StarterKit,
+      Color,
+      Highlight.configure({
+        multicolor: true
+      }),
       FontFamily,
       TextStyle,
       Underline,
