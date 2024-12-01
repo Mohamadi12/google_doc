@@ -10,9 +10,36 @@ import TableCell from '@tiptap/extension-table-cell'
 import TableHeader from '@tiptap/extension-table-header'
 import TableRow from '@tiptap/extension-table-row'
 import { useEditor, EditorContent } from "@tiptap/react";
+import { useEditorState } from "@/app/store/use-editor-store";
 
 export const Editor = () => {
+  const {setEditor} =useEditorState()
+
   const editor = useEditor({
+    onCreate({editor}){
+      setEditor(editor)
+    },
+    onDestroy(){
+      setEditor(null)
+    },
+    onUpdate(){
+      setEditor(editor)
+    },
+    onSelectionUpdate(){
+      setEditor(editor)
+    },
+    onTransaction(){
+      setEditor(editor)
+    },
+    onFocus(){
+      setEditor(editor)
+    },
+    onBlur(){
+      setEditor(editor)
+    },
+    onContentError(){
+      setEditor(editor)
+    },
     editorProps: {
       attributes: {
         style: "padding-left: 56px; padding-right: 56px",
