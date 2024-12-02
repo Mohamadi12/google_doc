@@ -1,6 +1,7 @@
 "use client";
 
 import StarterKit from "@tiptap/starter-kit";
+import TextAlign from '@tiptap/extension-text-align'
 import Highlight from '@tiptap/extension-highlight'
 import { Color } from '@tiptap/extension-color'
 import Link from '@tiptap/extension-link'
@@ -55,6 +56,9 @@ export const Editor = () => {
     },
     extensions: [
       StarterKit,
+      TextAlign.configure({
+        types: ['heading', 'paragraph'],
+      }),
       Link.configure({
         openOnClick: false,
         autolink: true,
