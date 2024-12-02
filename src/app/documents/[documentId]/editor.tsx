@@ -1,10 +1,10 @@
 "use client";
 
 import StarterKit from "@tiptap/starter-kit";
-import TextAlign from '@tiptap/extension-text-align'
-import Highlight from '@tiptap/extension-highlight'
-import { Color } from '@tiptap/extension-color'
-import Link from '@tiptap/extension-link'
+import TextAlign from "@tiptap/extension-text-align";
+import Highlight from "@tiptap/extension-highlight";
+import { Color } from "@tiptap/extension-color";
+import Link from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
@@ -19,6 +19,7 @@ import TableRow from "@tiptap/extension-table-row";
 import { useEditor, EditorContent } from "@tiptap/react";
 import { useEditorState } from "@/app/store/use-editor-store";
 import { FontSizeExtension } from "@/extensions/font-size";
+import { LineHeightExtension } from "@/extensions/line-height";
 
 export const Editor = () => {
   const { setEditor } = useEditorState();
@@ -57,18 +58,19 @@ export const Editor = () => {
     },
     extensions: [
       StarterKit,
+      LineHeightExtension,
       FontSizeExtension,
       TextAlign.configure({
-        types: ['heading', 'paragraph'],
+        types: ["heading", "paragraph"],
       }),
       Link.configure({
         openOnClick: false,
         autolink: true,
-        defaultProtocol: "https"
+        defaultProtocol: "https",
       }),
       Color,
       Highlight.configure({
-        multicolor: true
+        multicolor: true,
       }),
       FontFamily,
       TextStyle,
