@@ -16,6 +16,7 @@ import { useState } from "react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { api } from "../../convex/_generated/api";
+import { toast } from "sonner";
 
 interface RenameDialogProps {
   documentId: Id<"documents">;
@@ -38,18 +39,19 @@ export const RenameDialog = ({
     e.preventDefault();
     setIsUpdating(true);
 
-    update({ id: documentId, title: title.trim() || "Untitled" }).finally(
-      () => {
+    update({ id: documentId, title: title.trim() || "Untitled" })
+      .catch(() => toast.error("Something went wrong"))
+      .then(() => toast.success("Document updated"))
+      .finally(() => {
         setIsUpdating(false);
         setOpen(false);
-      }
-    );
+      });  
   };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent onClick={(e) =>e.stopPropagation()}>
+      <DialogContent onClick={(e) => e.stopPropagation()}>
         <form onSubmit={onSubmit}>
           <DialogHeader>
             <DialogTitle>Rename document</DialogTitle>
@@ -60,7 +62,7 @@ export const RenameDialog = ({
           <div className="my-4">
             <Input
               value={title}
-              onChange={(e) =>setTitle( e.target.value)}
+              onChange={(e) => setTitle(e.target.value)}
               placeholder="Document name"
               onClick={(e) => e.stopPropagation()}
             />
