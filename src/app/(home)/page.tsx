@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import { Navbar } from "./navbar";
@@ -9,7 +9,7 @@ import { DocumentsTable } from "./documents-table";
 import { useSearchParam } from "@/hooks/use-search-param";
 
 const Home = () => {
-  const [search] = useSearchParam()
+  const [search] = useSearchParam();
 
   // Get all information of document
   // const documents = useQuery(api.documents.get)
@@ -20,7 +20,11 @@ const Home = () => {
   //   )
   // }
 
-  const {results, status, loadMore} = usePaginatedQuery(api.documents.get, {search}, { initialNumItems: 5 })
+  const { results, status, loadMore } = usePaginatedQuery(
+    api.documents.get,
+    { search },
+    { initialNumItems: 5 }
+  );
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -28,14 +32,14 @@ const Home = () => {
         <Navbar />
       </div>
       <div className="mt-16">
-        <TemplateGallery/>
+        <TemplateGallery />
         {/* {documents?.map((document) =>(
           <span key={document._id}>{document.title}</span>
         ))} */}
-        <DocumentsTable 
-               documents={results}
-               loadMore={loadMore}
-               status={status}
+        <DocumentsTable
+          documents={results}
+          loadMore={loadMore}
+          status={status}
         />
       </div>
     </div>
